@@ -1,4 +1,4 @@
- package com.example.connect3games;
+package com.example.connect3games;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,22 +6,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
- public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 
-     // (0) for yellow r (1) for red :2 for empty
+    // (0) for yellow r (1) for red :2 for empty
 
-     int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
+    int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
 
-     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
+    int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
-     boolean gameActive = true;
+    int activePlayer = 0;
 
-     int activePlayer = 0;
+    boolean gameActive = true;
+
 
     public void dropIn (View view) {
 
@@ -78,6 +80,37 @@ import android.widget.Toast;
 
             }
         }
+    }
+
+    public void playAgain (View view) {
+
+        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+
+        TextView winnerTextView = (TextView) findViewById(R.id.winnerTextView);
+
+        playAgainButton.setVisibility(View.INVISIBLE);
+
+        winnerTextView.setVisibility(View.INVISIBLE );
+
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+
+        for(int i=0; i<gridLayout.getChildCount(); i++) {
+
+            ImageView counter = (ImageView) gridLayout.getChildAt(i);
+
+            counter.setImageDrawable(null);
+        }
+
+        for (int i=0; i<gameState.length; i++) {
+
+            gameState[i] = 2;
+        }
+
+        activePlayer = 0;
+
+        gameActive = true;
+
+
     }
 
     @Override
