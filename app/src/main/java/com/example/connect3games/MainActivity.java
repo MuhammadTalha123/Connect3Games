@@ -84,31 +84,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void playAgain (View view) {
 
-        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
 
-        TextView winnerTextView = (TextView) findViewById(R.id.winnerTextView);
+            Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
 
-        playAgainButton.setVisibility(View.INVISIBLE);
+            TextView winnerTextView = (TextView) findViewById(R.id.winnerTextView);
 
-        winnerTextView.setVisibility(View.INVISIBLE );
+            playAgainButton.setVisibility(View.INVISIBLE);
 
-        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+            winnerTextView.setVisibility(View.INVISIBLE);
 
-        for(int i=0; i<gridLayout.getChildCount(); i++) {
+            GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
-            ImageView counter = (ImageView) gridLayout.getChildAt(i);
+            for (int i = 0; i < gridLayout.getChildCount(); i++) {
 
-            counter.setImageDrawable(null);
-        }
+                ImageView counter = (ImageView) gridLayout.getChildAt(i);
 
-        for (int i=0; i<gameState.length; i++) {
+                counter.setImageDrawable(null);
+            }
 
-            gameState[i] = 2;
-        }
+            for (int i = 0; i < gameState.length; i++) {
 
-        activePlayer = 0;
+                gameState[i] = 2;
+            }
 
-        gameActive = true;
+            activePlayer = 0;
+
+            gameActive = true;
 
 
     }
